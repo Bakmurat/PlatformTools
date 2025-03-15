@@ -1,0 +1,7 @@
+#KyvernoFluxDev/kyvernofluxdev/infrastructures/base/001-namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: kyverno
+  name: kyverno

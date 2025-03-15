@@ -1,0 +1,9 @@
+#KyvernoFluxDev/kyvernofluxdev/infrastructures/dev/dev-nbu-dus2/kyverno/kyverno
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../../../base/kyverno
+patches:
+  - path: patch.yaml
+    target:
+      kind: HelmRelease

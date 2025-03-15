@@ -1,0 +1,6 @@
+# KyvernoFluxDev/kyvernofluxdev/infrastructures/dev/dev-nbu-dus2/flux-system
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: flux-system
+resources:
+  - ../../../base/000-helm-repository

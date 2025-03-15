@@ -1,0 +1,8 @@
+# KyvernoFluxDev/kyvernofluxdev/infrastructures/base/000-helm-repository
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: kyverno-repo
+spec:
+  interval: 24h
+  url: https://kyverno.github.io/kyverno/

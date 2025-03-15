@@ -1,0 +1,5 @@
+#KyvernoFluxDev/kyvernofluxdev/infrastructures/dev/dev-nbu-dus2/cluster-wide-resources/namespace
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../../../base/001-namespace

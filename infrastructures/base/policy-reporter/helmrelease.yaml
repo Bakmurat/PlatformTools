@@ -1,0 +1,88 @@
+# infrastructures/base/policy-reporter/helmrelease.yaml
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: policy-reporter
+  namespace: flux-system  # The HelmRelease itself can live in flux-system
+spec:
+  chart:
+    spec:
+      # Chart name as it appears in the policy-reporter Helm repo
+      chart: policy-reporter
+      # Adjust version to match your desired release
+      version: 3.0.4
+      sourceRef:
+        kind: HelmRepository
+        name: policy-reporter-repo
+        namespace: flux-system
+  interval: 1m
+  install:
+    createNamespace: false
+  targetNamespace: policy-reporter
+  values:
+    plugin:
+      kyverno:
+        enabled: true
+        image:
+          registry: ghcr.io
+          repository: kyverno/policy-reporter/kyverno-plugin
+          pullPolicy: IfNotPresent
+          tag: "0.4.1"
+        replicaCount: 1
+        logging:
+          api: true
+          server: true
+          encoding: console
+          logLevel: 0
+        server:
+          port: 8080
+    monitoring:
+      enabled: true
+      grafana:
+        dashboards:
+          enabled: false
+    rest:
+      enabled: true
+    metrics:
+      enabled: true
+      mode: custom
+      customLabels: ["namespace", "rule", "policy", "report", "kind", "name", "status", "severity", "category", "source", "property:exceptions", "message"]
+    ui:
+      enabled: true
+      displayMode: dark
+      sources:
+        - name: kyverno
+          type: result
+          exceptions: true
+    # emailReports:
+    #   clusterName: Playground Cluster
+    #   smtp:
+    #     host: sandbox.smtp.mailtrap.io
+    #     port: 587
+    #     username: e3c2126244a6af
+    #     password: 15d4093e5a5372
+    #     from: bkuban8@gmail.com
+    #     encryption: ""
+    #     certificate: ""
+    #     skipTLS: false
+    #   summary:
+    #     enabled: true
+    #     schedule: "0 8 * * *"
+    #     activeDeadlineSeconds: 300
+    #     backoffLimit: 1
+    #     ttlSecondsAfterFinished: 60
+    #     to: ['bakmuratkubanaliev@gmail.com']
+    #   violations:
+    #     enabled: true
+    #     schedule: "0 8 * * *"
+    #     activeDeadlineSeconds: 300
+    #     backoffLimit: 1
+    #     ttlSecondsAfterFinished: 60
+    #     to: ['bakmuratkubanaliev@gmail.com']
+    # reports:
+    #   violations:
+    #     enabled: true
+    #     schedule: "0 8 * * *"
+    #     activeDeadlineSeconds: 300
+    #     backoffLimit: 1
+    #     ttlSecondsAfterFinished: 60
