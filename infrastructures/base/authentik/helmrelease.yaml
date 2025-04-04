@@ -18,32 +18,13 @@ spec:
     createNamespace: true
   targetNamespace: authentik
   values:
-    global:
-      image:
-        repository: ghcr.io/goauthentik/server
-        pullPolicy: IfNotPresent
-      env:
-        AUTHENTIK_BOOTSTRAP_PASSWORD: "password"
-        AUTHENTIK_BOOTSTRAP_TOKEN: "password"
     authentik:
-      secret_key: "authentiksecretkey"
+      secret_key: "cZX7Brt3GwX5mgBV1XPK1Mmr+BzqxIUD6cWlkg8V93oRVliUdmqbl0W1CZZ4aa1jyre13IaFzOBRU7aa"
+      error_reporting:
+        enabled: true
       postgresql:
-        password: "password"
-    redis:
-      master:
-        persistence:
-          size: 1Gi
-    postgresql:
-      auth:
-        username: authentik
-        database: authentik
-        password: "password"
-      primary:
-        persistence:
-          size: 1Gi
+        password: "YAvOiXHBadA1s7HKLd1wgxuIcAMNMVI5nFtRHDL1RNGy7YXXwF"
     server:
-      service:
-        type: ClusterIP
       ingress:
         enabled: true
         ingressClassName: nginx
@@ -53,5 +34,8 @@ spec:
           nginx.ingress.kubernetes.io/ssl-redirect: "false"
         hosts:
           - auth.devkuban.com
-        https: false
-        pathType: Prefix
+    postgresql:
+      enabled: true
+      password: "YAvOiXHBadA1s7HKLd1wgxuIcAMNMVI5nFtRHDL1RNGy7YXXwF"
+    redis:
+      enabled: true
