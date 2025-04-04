@@ -1,4 +1,4 @@
-# KyvernoFluxDev/kyvernofluxdev/infrastructures/dev/dev-nbu-dus2/kyverno/kyverno
+# KyvernoFluxDev/kyvernofluxdev/infrastructures/dev/devcluster2/kyverno/kyverno
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:

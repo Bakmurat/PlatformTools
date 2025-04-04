@@ -1,4 +1,4 @@
-# infrastructures/dev/dev-nbu-dus2/policy-reporter/patch.yaml
+# infrastructures/dev/devcluster2/policy-reporter/patch.yaml
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
