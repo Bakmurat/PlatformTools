@@ -22,6 +22,25 @@ spec:
       image:
         repository: ghcr.io/goauthentik/server
         pullPolicy: IfNotPresent
+      env:
+        AUTHENTIK_BOOTSTRAP_PASSWORD: "password"
+        AUTHENTIK_BOOTSTRAP_TOKEN: "password"
+    authentik:
+      secret_key: "authentiksecretkey"
+      postgresql:
+        password: "password"
+    redis:
+      master:
+        persistence:
+          size: 1Gi
+    postgresql:
+      auth:
+        username: authentik
+        database: authentik
+        password: "password"
+      primary:
+        persistence:
+          size: 1Gi
     server:
       service:
         type: ClusterIP
