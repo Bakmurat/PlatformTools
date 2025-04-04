@@ -1,4 +1,4 @@
-#KyvernoFluxDev/kyvernofluxdev/infrastructures/dev/devcluster2/kyverno/kyverno
+#KyvernoFluxDev/kyvernofluxdev/infrastructures/dev/devcluster/kyverno/kyverno
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:

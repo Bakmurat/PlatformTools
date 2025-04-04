@@ -1,4 +1,4 @@
-#KyvernoFluxDev/kyvernofluxdev/clusters/dev/devcluster2
+#KyvernoFluxDev/kyvernofluxdev/clusters/dev/devcluster
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -7,7 +7,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./infrastructures/dev/devcluster2
+  path: ./infrastructures/dev/devcluster
   prune: true
   sourceRef:
     kind: GitRepository
