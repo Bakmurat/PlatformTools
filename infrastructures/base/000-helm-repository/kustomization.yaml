@@ -6,3 +6,4 @@ namespace: flux-system
 resources:
   - kyverno.yaml
   - policy-reporter.yaml
+  - authentik.yaml

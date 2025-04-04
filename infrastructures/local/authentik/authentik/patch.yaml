@@ -1,0 +1,11 @@
+# KyvernoFluxDev/infrastructures/local/authentik/authentik
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: authentik
+spec:
+  values:
+    global:
+      image:
+        repository: ghcr.io/goauthentik/server
+        pullPolicy: IfNotPresent

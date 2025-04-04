@@ -1,0 +1,9 @@
+#KyvernoFluxDev/infrastructures/local/authentik/authentik
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../../base/authentik
+patches:
+  - path: patch.yaml
+    target:
+      kind: HelmRelease
